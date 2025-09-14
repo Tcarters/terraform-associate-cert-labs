@@ -39,3 +39,7 @@ terraform.rc
 aws/
 
 config_env_aws.sh
+
+tmp/
+
+01_Manage_resources_terraform_state/.terraform*
