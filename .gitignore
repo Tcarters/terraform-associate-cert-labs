@@ -43,3 +43,6 @@ config_env_aws.sh
 tmp/
 
 01_Manage_resources_terraform_state/.terraform*
+
+02_manage_tf_version/tmp
+02_manage_tf_version/.terraform*
