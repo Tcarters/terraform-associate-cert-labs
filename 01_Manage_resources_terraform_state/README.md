@@ -15,3 +15,36 @@
 2. Create an HPC account and login to HPC using terraform cli (optional)
 
 3. Create resources 
+
+
+### Exploring State move
+
+1. In folder new_state, we modified the main file in the section:
+
+```tf
+
+data "terraform_remote_state" "root" {
+  backend = "remote"
+
+  #config = {
+  #  path = "../terraform.tfstate"
+  #}
+  config = {
+    organization = "prod-tdmund-tf"
+    workspaces = {
+      name = "lab01-manage-states-tfe" # the workspace where main resources are deployed 
+      }
+      }
+}
+```
+
+2. Move an instance resource from the folder ```new_state``` to main ```01_Manage_resources_terraform_state```
+
+```sh
+terraform state mv -state-out=../terraform.tfstate aws_instance.example_new aws_instance.example_new
+
+terraform state mv -state-out ../../../01_Manage_resources_terraform_state/.terraform/terraform.tfstate aws_instance.example_new aws_instance.webserver01_new
+
+
+### OUTPUT: Move "aws_instance.example_new" to "aws_instance.webserver01_new"
+```
