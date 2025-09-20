@@ -46,3 +46,7 @@ tmp/
 
 02_manage_tf_version/tmp
 02_manage_tf_version/.terraform*
+
+03_spotify_tfe_play/.terraform*
+03_spotify_tfe_play/terraform*
+03_spotify_tfe_play/.env
