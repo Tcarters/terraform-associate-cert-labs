@@ -34,13 +34,6 @@ resource "aws_key_pair" "web_app_key" {
   public_key = tls_private_key.web_app_key.public_key_openssh
 }
 
-# # Save the private key to your ssh-data directory
-# resource "local_file" "private_key" {
-#   filename        = "${path.root}/ssh-data/${var.name}-web-app-key.pem"
-#   content         = tls_private_key.web_app_key.private_key_pem
-#   file_permission = "0600"  # Restrictive permissions for security
-# }
-
 # First create the directory
 resource "null_resource" "create_ssh_dir" {
   provisioner "local-exec" {
@@ -83,22 +76,10 @@ resource "aws_instance" "web_app" {
 /**** Security groups ****/
 resource "aws_security_group" "sg_ping" {
   name = "Allow Ping"
-  # ingress {   // causing conflicts
-  #   from_port       = -1
-  #   to_port         = -1
-  #   protocol        = "icmp"
-  #   security_groups = [aws_security_group.sg_8080.id]
-  # }
 }
 
 resource "aws_security_group" "sg_8080" {
   name = "Allow 8080"
-  # ingress {
-  #   from_port       = 8080
-  #   to_port         = 8080
-  #   protocol        = "tcp"
-  #   security_groups = [aws_security_group.sg_ping.id]
-  # }
   // connectivity to ubuntu mirrors is required to run `apt-get update` and `apt-get install apache2`
   egress {
     from_port   = 0
