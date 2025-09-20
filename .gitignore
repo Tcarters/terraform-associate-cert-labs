@@ -50,3 +50,5 @@ tmp/
 03_spotify_tfe_play/.terraform*
 03_spotify_tfe_play/terraform*
 03_spotify_tfe_play/.env
+
+04_terraform_troubleshooting/.terraform*

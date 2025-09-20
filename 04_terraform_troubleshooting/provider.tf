@@ -2,6 +2,14 @@
 # SPDX-License-Identifier: MPL-2.0
 
 terraform {
+  cloud {
+    organization = "prod-tdmund-tf"
+
+    workspaces {
+      name = "lab04-tf-troubleshooting"
+    }
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
