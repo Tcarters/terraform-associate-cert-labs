@@ -52,3 +52,5 @@ tmp/
 03_spotify_tfe_play/.env
 
 04_terraform_troubleshooting/.terraform*
+
+05_modules_use_tf/.terraform*
