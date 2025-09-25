@@ -54,3 +54,5 @@ tmp/
 04_terraform_troubleshooting/.terraform*
 
 05_modules_use_tf/.terraform*
+
+06_modules_creation/.terraform*

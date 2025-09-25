@@ -1,28 +1,28 @@
 
 provider "aws" {
-  region = var.provider_region
+  region                 = var.provider_region
 
 }
 
 module "vpc" {
-  source              = "terraform-aws-modules/vpc/aws"
-  version             = "6.2.0"
+  source                 = "terraform-aws-modules/vpc/aws"
+  version                = "6.2.0"
 
-  name                = var.vpc_name
-  cidr                = var.vpc_cidr
+  name                   = var.vpc_name
+  cidr                   = var.vpc_cidr
 
-  azs                 = var.vpc_azs
-  private_subnets     = var.vpc_private_subnets
-  public_subnets      = var.vpc_public_subnets
+  azs                    = var.vpc_azs
+  private_subnets        = var.vpc_private_subnets
+  public_subnets         = var.vpc_public_subnets
 
-  enable_nat_gateway  = var.vpc_enable_nat_gateway
+  enable_nat_gateway     = var.vpc_enable_nat_gateway
 
-  tags                = var.vpc_tags
+  tags                   = var.vpc_tags
 }
 
 module "ec2_instances" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
-  version                = "5.5.0"
+  version                = "6.1.1"
   
   count                  = 2
   name                   = "${var.env_name}-ec2-cluster-${count.index}"

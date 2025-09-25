@@ -6,6 +6,13 @@ variable "provider_region" {
   
 }
 
+variable "s3_bucket_name" {
+    description = "Name of s3 bucket"
+    type        = string
+    default     = "value"
+  
+}
+
 variable "env_name" {
   description = "Name of Environment"
   type        = string

@@ -1,0 +1,16 @@
+provider_region     = "ap-south-1"
+
+env_name            = "dev"
+
+vpc_name            = "lab06-vpc"
+
+s3_bucket_name      = "lab05_bucket"
+
+vpc_azs             = ["ap-south-1a", "ap-south-1b", "ap-south-1c"]
+
+vpc_private_subnets = ["10.0.10.0/24", "10.0.20.0/24"]
+
+vpc_tags            = {
+    Terraform       = "true"
+    Environment     = "dev"
+}
