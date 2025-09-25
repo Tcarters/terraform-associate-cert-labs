@@ -3,8 +3,9 @@ resource "aws_s3_bucket" "s3_bucket" {
   bucket                  = var.bucket_name
   tags                    = var.tags
 
+  force_destroy           = true
   # Enable ACLs (required for public-read ACL)
-#   object_ownership       = "BucketOwnerPreferred"  # <- Add this line
+  #   object_ownership       = "BucketOwnerPreferred"  # <- Add this line
 }
 
 resource "aws_s3_bucket_ownership_controls" "s3_bucket" {
