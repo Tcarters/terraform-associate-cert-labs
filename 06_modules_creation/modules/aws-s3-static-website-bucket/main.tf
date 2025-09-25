@@ -2,6 +2,16 @@
 resource "aws_s3_bucket" "s3_bucket" {
   bucket                  = var.bucket_name
   tags                    = var.tags
+
+  # Enable ACLs (required for public-read ACL)
+#   object_ownership       = "BucketOwnerPreferred"  # <- Add this line
+}
+
+resource "aws_s3_bucket_ownership_controls" "s3_bucket" {
+  bucket = aws_s3_bucket.s3_bucket.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"  # Allow ACLs
+  }
 }
 
 # Disable Block Public Access (required for static websites)
@@ -28,7 +38,7 @@ resource "aws_s3_bucket_website_configuration" "s3_bucket" {
 
 resource "aws_s3_bucket_acl" "s3_bucket" {
     depends_on = [
-        # aws_s3_bucket_ownership_controls.example,
+        aws_s3_bucket_ownership_controls.s3_bucket,
         aws_s3_bucket_public_access_block.s3_bucket
   ]
     bucket                  = aws_s3_bucket.s3_bucket.id
