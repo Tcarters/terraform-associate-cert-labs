@@ -60,3 +60,4 @@ tmp/
 07_tf_apply/.terraform*
 
 08_manage_resource_drift/.terraform*
+08_manage_resource_drift/key/
