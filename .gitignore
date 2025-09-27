@@ -58,3 +58,5 @@ tmp/
 06_modules_creation/.terraform*
 
 07_tf_apply/.terraform*
+
+08_manage_resource_drift/.terraform*
