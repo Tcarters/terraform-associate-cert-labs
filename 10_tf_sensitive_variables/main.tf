@@ -14,8 +14,6 @@ resource "random_string" "lb_id" {
     special             = false
 }
 
-
-
 resource "aws_db_subnet_group" "private" {
     subnet_ids          = module.vpc.private_subnets
 }
