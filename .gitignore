@@ -63,3 +63,5 @@ tmp/
 08_manage_resource_drift/key/*
 
 09_terraform_state_refresh/.terraform*
+
+10_tf_sensitive_variables/.terraform*
