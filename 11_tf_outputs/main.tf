@@ -1,0 +1,38 @@
+
+provider "aws" {
+    region = var.aws_region
+  
+}
+
+
+data "aws_availability_zones" "available" {
+    state = "available"
+    
+    filter {
+        name   = "opt-in-status"
+        values = ["opt-in-not-required"]
+        }
+}
+
+resource "random_string" "lb_id" {
+    length  = 3
+    special = false
+}
+
+resource "aws_db_subnet_group" "private" {
+    subnet_ids = module.vpc.private_subnets
+}
+
+resource "aws_db_instance" "database" {
+
+    allocated_storage    = 5
+    engine               = "mysql"
+    engine_version       = "5.7"
+    instance_class       = "db.t3.micro"
+    username             = var.db_username
+    password             = var.db_password
+
+    db_subnet_group_name = aws_db_subnet_group.private.name
+
+    skip_final_snapshot  = true
+}
