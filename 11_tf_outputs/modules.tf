@@ -39,7 +39,6 @@ module "lb_security_group" {
 }
 
 
-
 module "elb_http" {
 
     source  = "terraform-aws-modules/elb/aws"
@@ -81,4 +80,3 @@ module "ec2_instances" {
     subnet_ids         = module.vpc.private_subnets[*]
     security_group_ids = [module.app_security_group.security_group_id]
 }
-
