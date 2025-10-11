@@ -1,4 +1,4 @@
-
+# variables in main root project
 
 variable "env_name" {
     type        = string
