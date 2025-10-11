@@ -1,3 +1,4 @@
+# Outputs files
 
 output "vpc_id" {
     description = "ID of project VPC"
