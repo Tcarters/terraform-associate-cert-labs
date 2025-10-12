@@ -1,5 +1,5 @@
 
-
+# All modules called in the main project are defined here.
 
 module "vpc" {
     source              = "terraform-aws-modules/vpc/aws"
