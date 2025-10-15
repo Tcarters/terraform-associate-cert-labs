@@ -5,7 +5,7 @@ variable "aws_region" {
     default     = "ap-south-1"
 }
 
-variable "env_name" {
+variable "env_name" { # IT environment for deployment
     type        = string
     description = "IT Environment for deployment"
     default     = "ete"
