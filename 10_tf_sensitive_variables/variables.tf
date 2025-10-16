@@ -1,5 +1,5 @@
 
-variable "aws_region" {
+variable "aws_region" {  # provider default region
     type        = string
     description = "Region Mame"
     default     = "ap-south-1"
