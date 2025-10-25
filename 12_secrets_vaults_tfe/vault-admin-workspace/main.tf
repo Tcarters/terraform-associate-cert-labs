@@ -7,13 +7,14 @@ provider "aws" {
 }
 
 provider "vault" {
-    
+    address = "http://127.0.0.1:8200"
+    token   = "noteducation"
 }
 
 
 
 resource "aws_iam_user" "secrets_engine" {
-     name = "${var.project_name}-user"
+    name = "${var.project_name}-user"
 }
 
 # data "aws_iam_user" "secrets_engine" {
@@ -27,8 +28,7 @@ resource "aws_iam_access_key" "secrets_engine_credentials" {
 
 resource "aws_iam_user_policy" "secrets_engine" {
     user = aws_iam_user.secrets_engine.name
-    #user = data.aws_iam_user.secrets_engine.user_name
-    
+        
     policy = jsonencode({
         Statement = [
             {
@@ -53,7 +53,7 @@ resource "vault_aws_secret_backend" "aws" {
     access_key = aws_iam_access_key.secrets_engine_credentials.id
     secret_key = aws_iam_access_key.secrets_engine_credentials.secret
 
-    default_lease_ttl_seconds = "120"
+    default_lease_ttl_seconds = 120
 }
 
 resource "vault_aws_secret_backend_role" "admin" {
