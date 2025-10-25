@@ -14,4 +14,5 @@ resource "aws_s3_bucket" "mybucket_01" {
 
   tags = {
     public_bucket = false
+  }
 }
