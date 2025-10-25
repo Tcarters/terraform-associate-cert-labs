@@ -68,3 +68,5 @@ tmp/
 
 11_tf_outputs/.terraform*
 
+
+projects/*
