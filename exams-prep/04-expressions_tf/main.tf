@@ -76,36 +76,38 @@ resource "aws_route_table_association" "rta_subnet_public" {
 }
 
 resource "aws_elb" "elb01" {
-  name    = "${local.name}-ELB"
-  subnets = [aws_subnet.subnet_public.id]
-  listener {
-    instance_port     = 8000
-    instance_protocol = "http"
-    lb_port           = 80
-    lb_protocol       = "http"
-  }
+    name    = "${local.name}-ELB"
+    subnets = [aws_subnet.subnet_public.id]
+    
+    listener {
+        instance_port     = 8000
+        instance_protocol = "http"
+        lb_port           = 80
+        lb_protocol       = "http"
+        }
 
-  health_check {
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-    timeout             = 3
-    target              = "HTTP:8000/"
-    interval            = 30
-  }
+    health_check {
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
+        timeout             = 3
+        target              = "HTTP:8000/"
+        interval            = 30
+        }
 
-  instances                   = [aws_instance.ubuntu.id]
-  idle_timeout                = 400
-  connection_draining         = true
-  connection_draining_timeout = 400
+    instances                   = aws_instance.ubuntu[*].id
+    idle_timeout                = 400
+    connection_draining         = true
+    connection_draining_timeout = 400
 }
 
 
 resource "aws_instance" "ubuntu" {
-  ami                         = data.aws_ami.ubuntu.id
-  instance_type               = "t2.micro"
-  associate_public_ip_address = true
-  subnet_id                   = aws_subnet.subnet_public.id
-  tags                        = local.common_tags
+    count                       = (var.high_availability == true ? 3 : 1 )
+    ami                         = data.aws_ami.ubuntu.id
+    instance_type               = "t2.micro"
+    associate_public_ip_address = (count.index == 0 ? true : false )
+    subnet_id                   = aws_subnet.subnet_public.id
+    tags                        = merge( local.common_tags )
 }
 
 
