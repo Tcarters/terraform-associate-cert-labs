@@ -20,11 +20,27 @@ resource "aws_instance" "instance_a" {
 }
 
 resource "aws_instance" "instance_b" {
-  ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t2.micro"
+    ami           = data.aws_ami.amazon_linux.id
+    instance_type = "t2.micro"
 }
 
 resource "aws_eip" "ip" {
-  domain   = "vpc"
-  instance = aws_instance.instance_a.id
+    domain      = "vpc"
+    instance    = aws_instance.instance_a.id
+}
+
+resource "aws_s3_bucket" "bucket01" { }
+
+resource "aws_instance" "instance_c" {
+    ami           = data.aws_ami.amazon_linux.id
+    instance_type = "t2.micro"
+
+    depends_on    = [aws_s3_bucket.bucket01]
+}
+
+module "example_sqs_queue" {
+    source     = "terraform-aws-modules/sqs/aws"
+    version    = "3.3.0"
+
+    depends_on = [aws_s3_bucket.bucket01, aws_instance.instance_c]
 }
