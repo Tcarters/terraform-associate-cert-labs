@@ -93,7 +93,7 @@ My preparation took about 1 to 4 weeks, broken down as follows:
 
 3. 🍁 **Stay calm** — Questions are concise but **demand deep understanding** and they are not lengthy 
 
-4. ⚡ **Use the *scratchpad** - Eliminate wrong answers systematically 
+4. ⚡ **Use the scratchpad** - Eliminate wrong answers systematically 
 
 5. 🍁 **Think like HashiCorp** — The simplest, most documented solution is usually right 
 
