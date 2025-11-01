@@ -23,7 +23,7 @@ My preparation took about 1 to 4 weeks, broken down as follows:
 
 - 📘 **1 week** studying Terraform fundamentals using the [official HashiCorp Learn portal](https://developer.hashicorp.com/terraform/learn)  
 - 🧠 **2-3 week** doing hands-on labs and building infra in AWS/Azure using Terraform  
-- 🧪 **Final week** with **[Udemy](https://www.udemy.com/course/terraform-certified-associate-003-practice-exams/)** and  analyzing mistakes, and reviewing the [Terraform documentation](https://developer.hashicorp.com/terraform/docs)  
+- 🧪 **Final week** with this **[Udemy terraform Practice Tests](https://www.udemy.com/course/terraform-certified-associate-003-practice-exams/)** and  analyzing mistakes, and reviewing the [Terraform documentation](https://developer.hashicorp.com/terraform/docs)  
 
 ---
 
